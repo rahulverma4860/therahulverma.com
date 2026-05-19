@@ -1,0 +1,565 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@200;300;400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --g:#C9A96E;--gl:#E8D5B0;--gd:#8B6A35;
+  --dk:#0E0B08;--dk2:#181210;--dk3:#221A12;
+  --cr:#F5F0E8;--cm:rgba(245,240,232,0.55);--cd:rgba(245,240,232,0.28);
+}
+.site{font-family:'Raleway',sans-serif;background:var(--dk);color:var(--cr);width:100%;}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+
+/* ── NAV ── */
+.nav{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 4rem;border-bottom:0.5px solid rgba(201,169,110,0.18);background:rgba(14,11,8,0.96);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:300;letter-spacing:4px;color:var(--g);text-transform:uppercase;}
+.nav-logo span{font-style:italic;color:var(--gl);}
+.nav-links{display:flex;gap:2.8rem;}
+.nav-links a{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cm);text-decoration:none;cursor:pointer;transition:color .25s;}
+.nav-links a:hover{color:var(--g);}
+.nav-right{display:flex;align-items:center;gap:1.5rem;}
+.nav-tel{font-size:10px;letter-spacing:1.5px;color:var(--cd);}
+.nav-btn{font-family:'Raleway',sans-serif;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;padding:10px 22px;border:0.5px solid var(--g);color:var(--g);background:transparent;cursor:pointer;transition:all .25s;}
+.nav-btn:hover{background:var(--g);color:var(--dk);}
+
+/* ── HERO FULL ── */
+.hero{width:100%;min-height:820px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:var(--dk2);}
+.hero-texture{position:absolute;inset:0;opacity:0.025;background-image:repeating-linear-gradient(0deg,var(--g) 0,var(--g) 1px,transparent 0,transparent 60px),repeating-linear-gradient(90deg,var(--g) 0,var(--g) 1px,transparent 0,transparent 60px);}
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,transparent 30%,rgba(14,11,8,0.7) 100%);}
+
+.hero-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:0.5px solid rgba(201,169,110,0.1);}
+.r1{width:700px;height:700px;animation:rpulse 5s ease-in-out infinite;}
+.r2{width:560px;height:560px;animation:rpulse 5s ease-in-out infinite .4s;}
+.r3{width:420px;height:420px;animation:rpulse 5s ease-in-out infinite .8s;}
+@keyframes rpulse{0%,100%{opacity:.3;}50%{opacity:.9;}}
+
+.hero-side-text{position:absolute;left:4rem;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:center center;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--cd);}
+.hero-side-text-r{position:absolute;right:4rem;top:50%;transform:translateY(-50%) rotate(90deg);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--cd);}
+
+.hero-content{position:relative;z-index:10;text-align:center;padding:0 2rem;animation:fadeUp 1.4s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+.hero-tag{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--g);margin-bottom:2rem;opacity:0;animation:fadeUp 1s ease .2s forwards;}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(64px,10vw,108px);font-weight:300;line-height:1;letter-spacing:-2px;margin-bottom:.5rem;opacity:0;animation:fadeUp 1s ease .4s forwards;}
+.hero-h1 em{font-style:italic;color:var(--g);}
+.hero-h1-sub{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,42px);font-weight:300;font-style:italic;color:var(--gl);opacity:0.7;margin-bottom:2.5rem;opacity:0;animation:fadeUp 1s ease .6s forwards;}
+.hero-rule{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem;opacity:0;animation:fadeUp 1s ease .8s forwards;}
+.rule-line{width:70px;height:0.5px;background:rgba(201,169,110,0.4);}
+.rule-diamond{width:7px;height:7px;background:var(--g);transform:rotate(45deg);}
+.rule-text{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--cd);}
+.hero-btns{display:flex;gap:1.2rem;justify-content:center;opacity:0;animation:fadeUp 1s ease 1s forwards;}
+.btn-gold{font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;padding:16px 40px;background:var(--g);color:var(--dk);border:none;cursor:pointer;transition:background .25s;}
+.btn-gold:hover{background:var(--gl);}
+.btn-outline{font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;padding:16px 40px;background:transparent;color:var(--cr);border:0.5px solid rgba(245,240,232,0.25);cursor:pointer;transition:all .25s;}
+.btn-outline:hover{border-color:var(--g);color:var(--g);}
+
+.hero-scroll-wrap{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeUp 1s ease 1.4s forwards;}
+.scroll-lbl{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--cd);}
+.scroll-bar{width:1px;height:50px;overflow:hidden;background:rgba(201,169,110,0.15);}
+.scroll-fill{width:1px;height:50px;background:var(--g);animation:scrollDown 2s ease-in-out infinite;}
+@keyframes scrollDown{0%{transform:translateY(-100%);}100%{transform:translateY(100%);}}
+
+.hero-bottom-strip{position:absolute;bottom:0;left:0;right:0;display:flex;border-top:0.5px solid rgba(201,169,110,0.12);}
+.hbs-item{flex:1;padding:1.4rem 2rem;border-right:0.5px solid rgba(201,169,110,0.1);display:flex;align-items:center;gap:1rem;background:rgba(14,11,8,0.7);}
+.hbs-item:last-child{border-right:none;}
+.hbs-icon{width:32px;height:32px;border:0.5px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.hbs-icon i{font-size:14px;color:var(--g);}
+.hbs-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--cd);margin-bottom:3px;}
+.hbs-value{font-family:'Playfair Display',serif;font-size:14px;font-weight:300;color:var(--cr);}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--g);padding:.9rem 0;overflow:hidden;white-space:nowrap;}
+.marquee-inner{display:inline-flex;animation:marquee 22s linear infinite;}
+.marquee-item{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dk);padding:0 3rem;}
+.marquee-sep{color:var(--dk2);opacity:.4;padding:0 1rem;}
+
+/* ── INTRO FULL ── */
+.intro{display:grid;grid-template-columns:1fr 1fr;min-height:640px;}
+.intro-left{background:var(--dk3);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.intro-art{position:relative;width:340px;height:460px;}
+.intro-frame-outer{position:absolute;inset:0;border:0.5px solid rgba(201,169,110,0.25);}
+.intro-frame-inner{position:absolute;inset:18px;border:0.5px solid rgba(201,169,110,0.12);}
+.intro-frame-core{position:absolute;inset:36px;background:var(--dk2);display:flex;align-items:center;justify-content:center;}
+.corner-ornament{position:absolute;width:24px;height:24px;}
+.co-tl{top:0;left:0;border-top:1px solid var(--g);border-left:1px solid var(--g);}
+.co-tr{top:0;right:0;border-top:1px solid var(--g);border-right:1px solid var(--g);}
+.co-bl{bottom:0;left:0;border-bottom:1px solid var(--g);border-left:1px solid var(--g);}
+.co-br{bottom:0;right:0;border-bottom:1px solid var(--g);border-right:1px solid var(--g);}
+.intro-badge{position:absolute;bottom:-20px;right:-20px;width:100px;height:100px;background:var(--g);display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.badge-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:300;color:var(--dk);line-height:1;}
+.badge-txt{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dk);opacity:.7;margin-top:3px;}
+
+.intro-right{padding:5rem 5rem;display:flex;flex-direction:column;justify-content:center;}
+.eyebrow{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--g);margin-bottom:1.5rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(38px,4vw,56px);font-weight:300;line-height:1.1;margin-bottom:1.5rem;}
+.sec-title em{font-style:italic;color:var(--g);}
+.sec-body{font-size:13px;line-height:2;color:var(--cm);margin-bottom:2.5rem;max-width:440px;}
+.feat-list{display:flex;flex-direction:column;gap:.9rem;margin-bottom:3rem;}
+.feat-row{display:flex;align-items:center;gap:1rem;}
+.feat-icon{width:28px;height:28px;border:0.5px solid rgba(201,169,110,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.feat-icon i{font-size:13px;color:var(--g);}
+.feat-txt{font-size:11px;letter-spacing:1px;color:var(--cd);text-transform:uppercase;}
+
+/* ── STATS FULL ── */
+.stats-full{background:var(--dk2);display:grid;grid-template-columns:repeat(4,1fr);border-top:0.5px solid rgba(201,169,110,0.12);border-bottom:0.5px solid rgba(201,169,110,0.12);}
+.stat-col{padding:3.5rem 2rem;text-align:center;border-right:0.5px solid rgba(201,169,110,0.1);}
+.stat-col:last-child{border-right:none;}
+.stat-n{font-family:'Playfair Display',serif;font-size:52px;font-weight:300;color:var(--g);line-height:1;}
+.stat-suffix{font-size:28px;color:var(--gd);}
+.stat-l{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cd);margin-top:10px;}
+
+/* ── VENUES FULL ── */
+.venues-full{padding:7rem 4rem;background:var(--dk);}
+.sec-hdr{text-align:center;margin-bottom:5rem;}
+.venues-hero-card{display:grid;grid-template-columns:1.4fr 1fr;border:0.5px solid rgba(201,169,110,0.15);margin-bottom:1px;overflow:hidden;}
+.vhc-visual{min-height:420px;background:var(--dk3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.vhc-visual-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(201,169,110,0.03) 0,rgba(201,169,110,0.03) 1px,transparent 0,transparent 40px);}
+.vhc-info{padding:3.5rem;display:flex;flex-direction:column;justify-content:center;border-left:0.5px solid rgba(201,169,110,0.1);}
+.venue-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:1rem;}
+.venue-title{font-family:'Playfair Display',serif;font-size:38px;font-weight:300;line-height:1.15;margin-bottom:1rem;}
+.venue-title em{font-style:italic;color:var(--g);}
+.venue-desc{font-size:12px;line-height:1.9;color:var(--cm);margin-bottom:2rem;}
+.venue-specs{display:flex;flex-direction:column;gap:.7rem;margin-bottom:2.5rem;}
+.vspec{display:flex;align-items:center;gap:.8rem;font-size:11px;color:var(--cd);}
+.vspec i{font-size:14px;color:var(--g);}
+.venues-sub-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+.vsub{border:0.5px solid rgba(201,169,110,0.1);border-top:none;padding:2.5rem 2rem;cursor:pointer;transition:background .25s;position:relative;overflow:hidden;}
+.vsub:hover{background:rgba(201,169,110,0.03);}
+.vsub-vis{height:160px;background:var(--dk3);margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;}
+.vsub-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:300;margin-bottom:.4rem;}
+.vsub-cap{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--cd);}
+.vsub-num{position:absolute;top:1.2rem;right:1.2rem;font-family:'Playfair Display',serif;font-size:48px;font-weight:300;color:rgba(201,169,110,0.06);}
+
+/* ── SERVICES ── */
+.services-full{background:var(--dk3);padding:7rem 4rem;}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,169,110,0.08);margin-top:4rem;}
+.svc-card{background:var(--dk3);padding:3rem 2rem;text-align:center;transition:background .3s;cursor:pointer;}
+.svc-card:hover{background:var(--dk2);}
+.svc-ico{width:60px;height:60px;border:0.5px solid rgba(201,169,110,0.2);margin:0 auto 2rem;display:flex;align-items:center;justify-content:center;transition:border-color .3s;}
+.svc-card:hover .svc-ico{border-color:rgba(201,169,110,0.5);}
+.svc-ico i{font-size:24px;color:var(--g);}
+.svc-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:300;margin-bottom:.8rem;}
+.svc-desc{font-size:11px;line-height:1.9;color:var(--cd);}
+
+/* ── GALLERY FULL ── */
+.gallery-full{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:300px 300px;}
+.gal-item{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.gal-item:hover .gal-overlay{opacity:1;}
+.gal-item:hover .gal-lbl{opacity:1;transform:translateY(0);}
+.gi-span{grid-row:span 2;}
+.gal-bg-1{background:linear-gradient(135deg,#1C1008,#2A1810);}
+.gal-bg-2{background:linear-gradient(135deg,#081C10,#102010);}
+.gal-bg-3{background:linear-gradient(135deg,#10081C,#180C20);}
+.gal-bg-4{background:linear-gradient(135deg,#1C0810,#201015);}
+.gal-bg-5{background:linear-gradient(135deg,#181808,#201E10);}
+.gal-overlay{position:absolute;inset:0;background:rgba(201,169,110,0.1);opacity:0;transition:opacity .35s;}
+.gal-lbl{position:absolute;bottom:1.2rem;left:1.4rem;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,0.6);opacity:0;transform:translateY(8px);transition:all .3s;}
+.gal-border-r{border-right:1px solid rgba(201,169,110,0.08);}
+.gal-border-b{border-bottom:1px solid rgba(201,169,110,0.08);}
+
+/* ── TESTIMONIAL FULL ── */
+.testi-full{padding:8rem 4rem;background:var(--dk);text-align:center;position:relative;overflow:hidden;}
+.testi-full::before{content:'\201C';position:absolute;top:-1rem;left:50%;transform:translateX(-50%);font-family:'Playfair Display',serif;font-size:280px;color:rgba(201,169,110,0.04);pointer-events:none;line-height:1;}
+.testi-stars{display:flex;justify-content:center;gap:.5rem;margin-bottom:2rem;}
+.testi-stars i{font-size:14px;color:var(--g);}
+.testi-quote{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,36px);font-style:italic;font-weight:300;line-height:1.65;max-width:760px;margin:0 auto 3rem;color:rgba(245,240,232,0.88);}
+.testi-author{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--g);margin-bottom:.5rem;}
+.testi-sub{font-size:11px;color:var(--cd);}
+.testi-nav{display:flex;justify-content:center;gap:.8rem;margin-top:3rem;}
+.tn-dot{width:5px;height:5px;transform:rotate(45deg);}
+.tn-dot.on{background:var(--g);}
+.tn-dot.off{background:rgba(201,169,110,0.25);}
+
+/* ── CTA FULL ── */
+.cta-full{min-height:500px;background:var(--dk3);display:flex;align-items:stretch;}
+.cta-left{flex:1;padding:6rem 5rem;display:flex;flex-direction:column;justify-content:center;border-right:0.5px solid rgba(201,169,110,0.12);}
+.cta-h2{font-family:'Playfair Display',serif;font-size:clamp(42px,5vw,68px);font-weight:300;line-height:1.05;margin-bottom:1.5rem;}
+.cta-h2 em{font-style:italic;color:var(--g);}
+.cta-sub{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--cd);margin-bottom:3rem;}
+.cta-btns{display:flex;gap:1rem;}
+.cta-right{width:380px;padding:5rem;display:flex;flex-direction:column;justify-content:center;gap:2rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1.2rem;padding-bottom:2rem;border-bottom:0.5px solid rgba(201,169,110,0.1);}
+.contact-item:last-child{border-bottom:none;padding-bottom:0;}
+.ci-ico{width:36px;height:36px;border:0.5px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ci-ico i{font-size:15px;color:var(--g);}
+.ci-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--cd);margin-bottom:5px;}
+.ci-val{font-size:13px;color:var(--cr);}
+
+/* ── FOOTER ── */
+.footer{background:#0A0806;padding:5rem 4rem 2rem;border-top:0.5px solid rgba(201,169,110,0.12);}
+.footer-top{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:4rem;border-bottom:0.5px solid rgba(201,169,110,0.08);}
+.f-logo{font-family:'Playfair Display',serif;font-size:26px;font-weight:300;letter-spacing:4px;color:var(--g);text-transform:uppercase;margin-bottom:1rem;}
+.f-logo span{font-style:italic;}
+.f-desc{font-size:12px;line-height:1.9;color:rgba(245,240,232,0.28);max-width:240px;margin-bottom:2rem;}
+.f-social{display:flex;gap:.8rem;}
+.f-soc-btn{width:34px;height:34px;border:0.5px solid rgba(201,169,110,0.2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .25s;}
+.f-soc-btn:hover{border-color:var(--g);}
+.f-soc-btn i{font-size:14px;color:var(--cd);}
+.f-col-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:1.5rem;}
+.f-links{display:flex;flex-direction:column;gap:.8rem;}
+.f-links a{font-size:12px;color:rgba(245,240,232,0.3);text-decoration:none;cursor:pointer;transition:color .25s;}
+.f-links a:hover{color:var(--g);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;}
+.f-copy{font-size:10px;color:rgba(245,240,232,0.2);}
+.f-legal{display:flex;gap:2rem;}
+.f-legal a{font-size:10px;color:rgba(245,240,232,0.2);text-decoration:none;cursor:pointer;}
+.f-schema{display:none;}
+</style>
+
+<h2 class="sr-only">Shubh Mahal — Luxury Wedding Hall in Jaipur, Rajasthan, India</h2>
+
+<div class="site">
+
+  <nav class="nav">
+    <div class="nav-logo">Shubh <span>Mahal</span></div>
+    <div class="nav-links">
+      <a>Venues</a><a>Services</a><a>Gallery</a><a>Packages</a><a>About</a><a>Contact</a>
+    </div>
+    <div class="nav-right">
+      <span class="nav-tel">+91 98765 43210</span>
+      <button class="nav-btn" onclick="sendPrompt('I want to book a venue visit at Shubh Mahal')">Book a Visit</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-rings">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="ring r3"></div>
+    </div>
+    <span class="hero-side-text">Est. 1998 · Jaipur</span>
+    <span class="hero-side-text-r">Rajasthan · India</span>
+    <div class="hero-content">
+      <p class="hero-tag">Jaipur's Premier Wedding Destination</p>
+      <h1 class="hero-h1">Where <em>Love</em><br>Becomes<br>Legacy</h1>
+      <p class="hero-h1-sub">Grand Venues · Royal Weddings</p>
+      <div class="hero-rule">
+        <div class="rule-line"></div>
+        <div class="rule-diamond"></div>
+        <div class="rule-text">Since 1998</div>
+        <div class="rule-diamond"></div>
+        <div class="rule-line"></div>
+      </div>
+      <div class="hero-btns">
+        <button class="btn-gold" onclick="sendPrompt('Show me venue options and packages at Shubh Mahal')">Explore Venues</button>
+        <button class="btn-outline">Watch Story</button>
+      </div>
+    </div>
+    <div class="hero-scroll-wrap">
+      <span class="scroll-lbl">Discover</span>
+      <div class="scroll-bar"><div class="scroll-fill"></div></div>
+    </div>
+    <div class="hero-bottom-strip">
+      <div class="hbs-item">
+        <div class="hbs-icon"><i class="ti ti-building" aria-hidden="true"></i></div>
+        <div><div class="hbs-label">Venues</div><div class="hbs-value">6 Unique Spaces</div></div>
+      </div>
+      <div class="hbs-item">
+        <div class="hbs-icon"><i class="ti ti-users" aria-hidden="true"></i></div>
+        <div><div class="hbs-label">Capacity</div><div class="hbs-value">Up to 1,200 Guests</div></div>
+      </div>
+      <div class="hbs-item">
+        <div class="hbs-icon"><i class="ti ti-award" aria-hidden="true"></i></div>
+        <div><div class="hbs-label">Experience</div><div class="hbs-value">25+ Years</div></div>
+      </div>
+      <div class="hbs-item">
+        <div class="hbs-icon"><i class="ti ti-heart" aria-hidden="true"></i></div>
+        <div><div class="hbs-label">Weddings</div><div class="hbs-value">2,500+ Celebrated</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-inner">
+      <span class="marquee-item">Wedding Venue Jaipur</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Banquet Hall Rajasthan</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Luxury Wedding Hall</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Reception Venue Jaipur</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Marriage Hall India</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Wedding Destination Rajasthan</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Wedding Venue Jaipur</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Banquet Hall Rajasthan</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Luxury Wedding Hall</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Reception Venue Jaipur</span><span class="marquee-sep">◆</span>
+    </div>
+  </div>
+
+  <section class="intro">
+    <div class="intro-left">
+      <div class="intro-art">
+        <div class="intro-frame-outer"></div>
+        <div class="intro-frame-inner"></div>
+        <div class="corner-ornament co-tl"></div>
+        <div class="corner-ornament co-tr"></div>
+        <div class="corner-ornament co-bl"></div>
+        <div class="corner-ornament co-br"></div>
+        <div class="intro-frame-core">
+          <svg width="180" height="180" viewBox="0 0 180 180">
+            <circle cx="90" cy="90" r="80" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.3"/>
+            <circle cx="90" cy="90" r="60" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.25"/>
+            <circle cx="90" cy="90" r="40" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.3"/>
+            <circle cx="90" cy="90" r="10" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+            <circle cx="90" cy="90" r="3" fill="#C9A96E" opacity="0.6"/>
+            <line x1="90" y1="10" x2="90" y2="170" stroke="#C9A96E" stroke-width="0.4" opacity="0.2"/>
+            <line x1="10" y1="90" x2="170" y2="90" stroke="#C9A96E" stroke-width="0.4" opacity="0.2"/>
+            <line x1="33" y1="33" x2="147" y2="147" stroke="#C9A96E" stroke-width="0.4" opacity="0.2"/>
+            <line x1="147" y1="33" x2="33" y2="147" stroke="#C9A96E" stroke-width="0.4" opacity="0.2"/>
+            <polygon points="90,12 96,25 90,22 84,25" fill="#C9A96E" opacity="0.4"/>
+            <polygon points="90,168 96,155 90,158 84,155" fill="#C9A96E" opacity="0.4"/>
+            <polygon points="12,90 25,84 22,90 25,96" fill="#C9A96E" opacity="0.4"/>
+            <polygon points="168,90 155,84 158,90 155,96" fill="#C9A96E" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="intro-badge">
+          <div class="badge-num">25</div>
+          <div class="badge-txt">Years</div>
+        </div>
+      </div>
+    </div>
+    <div class="intro-right">
+      <p class="eyebrow">Our Legacy</p>
+      <h2 class="sec-title">Crafting <em>Timeless</em><br>Royal Moments</h2>
+      <p class="sec-body">For over two decades, Shubh Mahal has stood as Jaipur's most coveted wedding destination. Our venues seamlessly blend the grandeur of Rajasthani royalty with contemporary luxury — creating unforgettable celebrations for every family.</p>
+      <div class="feat-list">
+        <div class="feat-row"><div class="feat-icon"><i class="ti ti-building" aria-hidden="true"></i></div><span class="feat-txt">Indoor &amp; outdoor venues — up to 1,200 guests</span></div>
+        <div class="feat-row"><div class="feat-icon"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i></div><span class="feat-txt">In-house catering — 500+ menu options</span></div>
+        <div class="feat-row"><div class="feat-icon"><i class="ti ti-bed" aria-hidden="true"></i></div><span class="feat-txt">On-site accommodation for 200+ guests</span></div>
+        <div class="feat-row"><div class="feat-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div><span class="feat-txt">Prime location — MI Road, Jaipur, Rajasthan</span></div>
+      </div>
+      <button class="btn-gold" style="width:fit-content;" onclick="sendPrompt('Tell me about Shubh Mahal history and facilities')">Discover Our Story</button>
+    </div>
+  </section>
+
+  <div class="stats-full">
+    <div class="stat-col"><div class="stat-n">2500<span class="stat-suffix">+</span></div><div class="stat-l">Weddings Celebrated</div></div>
+    <div class="stat-col"><div class="stat-n">6</div><div class="stat-l">Unique Venues</div></div>
+    <div class="stat-col"><div class="stat-n">1200</div><div class="stat-l">Max Guest Capacity</div></div>
+    <div class="stat-col"><div class="stat-n">25<span class="stat-suffix">+</span></div><div class="stat-l">Years of Excellence</div></div>
+  </div>
+
+  <section class="venues-full">
+    <div class="sec-hdr">
+      <p class="eyebrow">Our Spaces</p>
+      <h2 class="sec-title">Choose Your <em>Perfect</em> Venue</h2>
+    </div>
+    <div class="venues-hero-card">
+      <div class="vhc-visual">
+        <div class="vhc-visual-pattern"></div>
+        <svg width="200" height="200" viewBox="0 0 200 200" opacity="0.25">
+          <rect x="20" y="90" width="160" height="80" fill="none" stroke="#C9A96E" stroke-width="0.8"/>
+          <polygon points="100,20 20,90 180,90" fill="none" stroke="#C9A96E" stroke-width="0.8"/>
+          <rect x="80" y="125" width="40" height="45" fill="none" stroke="#C9A96E" stroke-width="0.8"/>
+          <line x1="100" y1="20" x2="100" y2="8" stroke="#C9A96E" stroke-width="0.8"/>
+          <circle cx="100" cy="6" r="3" fill="#C9A96E"/>
+          <rect x="40" y="110" width="24" height="24" fill="none" stroke="#C9A96E" stroke-width="0.5"/>
+          <rect x="136" y="110" width="24" height="24" fill="none" stroke="#C9A96E" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="vhc-info">
+        <p class="venue-tag">Flagship Venue</p>
+        <h3 class="venue-title">The Grand <em>Durbar</em></h3>
+        <p class="venue-desc">Our crown jewel — a magnificent 15,000 sq ft hall adorned with hand-painted ceilings, crystal chandeliers, and intricate jali work inspired by Rajputana architecture.</p>
+        <div class="venue-specs">
+          <div class="vspec"><i class="ti ti-users" aria-hidden="true"></i>Up to 1,200 guests</div>
+          <div class="vspec"><i class="ti ti-dimensions" aria-hidden="true"></i>15,000 sq ft floor area</div>
+          <div class="vspec"><i class="ti ti-air-conditioning" aria-hidden="true"></i>Fully air-conditioned</div>
+          <div class="vspec"><i class="ti ti-car" aria-hidden="true"></i>500-car valet parking</div>
+        </div>
+        <button class="btn-gold" onclick="sendPrompt('Tell me more about The Grand Durbar venue and its pricing')">View Venue Details</button>
+      </div>
+    </div>
+    <div class="venues-sub-grid">
+      <div class="vsub">
+        <span class="vsub-num">01</span>
+        <div class="vsub-vis" style="background:linear-gradient(135deg,#0C1810,#081210);">
+          <svg width="60" height="60" viewBox="0 0 60 60" opacity="0.3"><circle cx="30" cy="30" r="25" fill="none" stroke="#C9A96E" stroke-width="0.7"/><circle cx="30" cy="30" r="15" fill="none" stroke="#C9A96E" stroke-width="0.7"/><circle cx="30" cy="30" r="4" fill="#C9A96E"/></svg>
+        </div>
+        <div class="vsub-name">Serenity Garden</div>
+        <div class="vsub-cap"><i class="ti ti-users" aria-hidden="true" style="font-size:12px;margin-right:5px;"></i>Up to 800 guests · Outdoor Lawn</div>
+      </div>
+      <div class="vsub">
+        <span class="vsub-num">02</span>
+        <div class="vsub-vis" style="background:linear-gradient(135deg,#10081C,#0C0614);">
+          <svg width="60" height="60" viewBox="0 0 60 60" opacity="0.3"><rect x="10" y="15" width="40" height="30" fill="none" stroke="#C9A96E" stroke-width="0.7"/><line x1="10" y1="25" x2="50" y2="25" stroke="#C9A96E" stroke-width="0.5"/><line x1="30" y1="15" x2="30" y2="45" stroke="#C9A96E" stroke-width="0.5"/></svg>
+        </div>
+        <div class="vsub-name">Sapphire Suite</div>
+        <div class="vsub-cap"><i class="ti ti-users" aria-hidden="true" style="font-size:12px;margin-right:5px;"></i>Up to 300 guests · Intimate Hall</div>
+      </div>
+      <div class="vsub">
+        <span class="vsub-num">03</span>
+        <div class="vsub-vis" style="background:linear-gradient(135deg,#1C0C08,#140804);">
+          <svg width="60" height="60" viewBox="0 0 60 60" opacity="0.3"><polygon points="30,8 52,45 8,45" fill="none" stroke="#C9A96E" stroke-width="0.7"/><line x1="30" y1="8" x2="30" y2="45" stroke="#C9A96E" stroke-width="0.4"/></svg>
+        </div>
+        <div class="vsub-name">Poolside Pavilion</div>
+        <div class="vsub-cap"><i class="ti ti-users" aria-hidden="true" style="font-size:12px;margin-right:5px;"></i>Up to 200 guests · Terrace</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-full">
+    <div class="sec-hdr">
+      <p class="eyebrow">What We Offer</p>
+      <h2 class="sec-title">Complete Wedding <em>Services</em></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-ico"><i class="ti ti-heart" aria-hidden="true"></i></div>
+        <div class="svc-name">Wedding Planning</div>
+        <div class="svc-desc">End-to-end coordination from mehendi to the final vidaai — our planners handle every detail</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i></div>
+        <div class="svc-name">Fine Catering</div>
+        <div class="svc-desc">500+ dishes across Rajasthani, North Indian, South Indian and Continental cuisines</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico"><i class="ti ti-flower" aria-hidden="true"></i></div>
+        <div class="svc-name">Floral &amp; Décor</div>
+        <div class="svc-desc">Bespoke floral designs, mandap styling and themed décor by master artisans</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico"><i class="ti ti-bed" aria-hidden="true"></i></div>
+        <div class="svc-name">Guest Rooms</div>
+        <div class="svc-desc">200+ luxury rooms and suites for family and guests within the estate</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gallery-full">
+    <div class="gal-item gi-span gal-bg-1 gal-border-r">
+      <svg width="100" height="100" viewBox="0 0 100 100" opacity="0.15"><circle cx="50" cy="50" r="45" fill="none" stroke="#C9A96E" stroke-width="0.7"/><circle cx="50" cy="50" r="30" fill="none" stroke="#C9A96E" stroke-width="0.7"/><circle cx="50" cy="50" r="8" fill="#C9A96E"/></svg>
+      <div class="gal-overlay"></div>
+      <span class="gal-lbl">Ceremony Halls</span>
+    </div>
+    <div class="gal-item gal-bg-2 gal-border-b">
+      <svg width="70" height="70" viewBox="0 0 70 70" opacity="0.15"><rect x="10" y="10" width="50" height="50" fill="none" stroke="#C9A96E" stroke-width="0.7"/><rect x="20" y="20" width="30" height="30" fill="none" stroke="#C9A96E" stroke-width="0.5"/></svg>
+      <div class="gal-overlay"></div>
+      <span class="gal-lbl">Reception</span>
+    </div>
+    <div class="gal-item gal-bg-3 gal-border-b">
+      <svg width="70" height="70" viewBox="0 0 70 70" opacity="0.15"><polygon points="35,8 62,55 8,55" fill="none" stroke="#C9A96E" stroke-width="0.7"/></svg>
+      <div class="gal-overlay"></div>
+      <span class="gal-lbl">Mandap Décor</span>
+    </div>
+    <div class="gal-item gal-bg-4">
+      <svg width="70" height="70" viewBox="0 0 70 70" opacity="0.15"><circle cx="35" cy="35" r="28" fill="none" stroke="#C9A96E" stroke-width="0.7"/><line x1="35" y1="7" x2="35" y2="63" stroke="#C9A96E" stroke-width="0.4"/><line x1="7" y1="35" x2="63" y2="35" stroke="#C9A96E" stroke-width="0.4"/></svg>
+      <div class="gal-overlay"></div>
+      <span class="gal-lbl">Garden Events</span>
+    </div>
+    <div class="gal-item gal-bg-5">
+      <svg width="70" height="70" viewBox="0 0 70 70" opacity="0.15"><rect x="15" y="15" width="40" height="40" fill="none" stroke="#C9A96E" stroke-width="0.7" transform="rotate(45 35 35)"/></svg>
+      <div class="gal-overlay"></div>
+      <span class="gal-lbl">Fine Catering</span>
+    </div>
+  </div>
+
+  <section class="testi-full">
+    <div class="testi-stars">
+      <i class="ti ti-star" aria-hidden="true"></i>
+      <i class="ti ti-star" aria-hidden="true"></i>
+      <i class="ti ti-star" aria-hidden="true"></i>
+      <i class="ti ti-star" aria-hidden="true"></i>
+      <i class="ti ti-star" aria-hidden="true"></i>
+    </div>
+    <blockquote class="testi-quote">"Shubh Mahal did not just host our wedding — they made it a memory our entire family will carry for generations. The venue, the food, the staff — every single detail was perfection."</blockquote>
+    <div class="testi-author">Priya &amp; Arjun Sharma</div>
+    <div class="testi-sub">Grand Durbar Hall · February 2024 · Jaipur</div>
+    <div class="testi-nav">
+      <div class="tn-dot on"></div>
+      <div class="tn-dot off"></div>
+      <div class="tn-dot off"></div>
+      <div class="tn-dot off"></div>
+    </div>
+  </section>
+
+  <section class="cta-full">
+    <div class="cta-left">
+      <p class="eyebrow">Begin Your Journey</p>
+      <h2 class="cta-h2">Start Planning<br>Your <em>Dream</em><br>Wedding Today</h2>
+      <p class="cta-sub">Private venue tours available 7 days a week</p>
+      <div class="cta-btns">
+        <button class="btn-gold" onclick="sendPrompt('I want to schedule a venue tour and get a wedding package quote')">Schedule a Tour ↗</button>
+        <button class="btn-outline">Download Brochure</button>
+      </div>
+    </div>
+    <div class="cta-right">
+      <div class="contact-item">
+        <div class="ci-ico"><i class="ti ti-phone" aria-hidden="true"></i></div>
+        <div><div class="ci-label">Call Us</div><div class="ci-val">+91 98765 43210</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-ico"><i class="ti ti-mail" aria-hidden="true"></i></div>
+        <div><div class="ci-label">Email</div><div class="ci-val">info@shubhmahal.in</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-ico"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+        <div><div class="ci-label">Address</div><div class="ci-val">MI Road, Jaipur, Rajasthan 302001</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-ico"><i class="ti ti-clock" aria-hidden="true"></i></div>
+        <div><div class="ci-label">Open Hours</div><div class="ci-val">Daily 9:00 AM – 8:00 PM</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="f-logo">Shubh <span>Mahal</span></div>
+        <p class="f-desc">Jaipur's premier wedding destination since 1998. Where Rajasthani heritage meets timeless elegance.</p>
+        <div class="f-social">
+          <div class="f-soc-btn"><i class="ti ti-brand-instagram" aria-label="Instagram"></i></div>
+          <div class="f-soc-btn"><i class="ti ti-brand-facebook" aria-label="Facebook"></i></div>
+          <div class="f-soc-btn"><i class="ti ti-brand-youtube" aria-label="YouTube"></i></div>
+          <div class="f-soc-btn"><i class="ti ti-brand-whatsapp" aria-label="WhatsApp"></i></div>
+        </div>
+      </div>
+      <div>
+        <div class="f-col-title">Venues</div>
+        <div class="f-links">
+          <a>The Grand Durbar</a>
+          <a>Serenity Garden</a>
+          <a>Sapphire Suite</a>
+          <a>Poolside Pavilion</a>
+          <a>View All Venues</a>
+        </div>
+      </div>
+      <div>
+        <div class="f-col-title">Services</div>
+        <div class="f-links">
+          <a>Wedding Planning</a>
+          <a>Catering &amp; Cuisine</a>
+          <a>Floral &amp; Décor</a>
+          <a>Guest Accommodation</a>
+          <a>Photography</a>
+        </div>
+      </div>
+      <div>
+        <div class="f-col-title">Quick Links</div>
+        <div class="f-links">
+          <a>Packages &amp; Pricing</a>
+          <a>Photo Gallery</a>
+          <a>Testimonials</a>
+          <a>Blog</a>
+          <a>Contact Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="f-copy">© 2025 Shubh Mahal Wedding Venue, Jaipur, Rajasthan, India. All rights reserved.</span>
+      <div class="f-legal">
+        <a>Privacy Policy</a>
+        <a>Terms of Use</a>
+        <a>Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json" class="f-schema">
+  {"@context":"https://schema.org","@type":"EventVenue","name":"Shubh Mahal Wedding Hall","address":{"@type":"PostalAddress","streetAddress":"MI Road","addressLocality":"Jaipur","addressRegion":"Rajasthan","postalCode":"302001","addressCountry":"IN"},"telephone":"+91-9876543210","url":"https://shubhmahal.in","maximumAttendeeCapacity":1200}
+  </script>
+</div>

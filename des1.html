@@ -1,0 +1,512 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --blk:#0C0C0C;--blk2:#141414;--blk3:#1A1A1A;--blk4:#222222;
+  --gld:#C4A265;--gld2:#D9BC8A;--gld3:#8C6E3C;--gldx:rgba(196,162,101,0.1);
+  --wht:#F8F6F2;--wht6:rgba(248,246,242,0.6);--wht3:rgba(248,246,242,0.3);--wht1:rgba(248,246,242,0.1);
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Inter',sans-serif;
+}
+.sr-only{position:absolute;width:1px;height:1px;clip:rect(0,0,0,0);overflow:hidden;}
+.site{font-family:var(--sans);background:var(--blk);color:var(--wht);width:100%;}
+
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:var(--blk);border-bottom:1px solid rgba(196,162,101,0.15);}
+.n-logo{font-family:var(--serif);font-size:20px;font-weight:300;letter-spacing:5px;color:var(--gld);text-transform:uppercase;}
+.n-logo span{color:var(--wht);font-style:italic;}
+.n-links{display:flex;gap:2.2rem;}
+.n-links a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--wht3);text-decoration:none;cursor:pointer;transition:color .2s;font-weight:400;}
+.n-links a:hover,.n-links a.on{color:var(--wht);}
+.n-right{display:flex;align-items:center;gap:1.2rem;}
+.n-tel{font-size:11px;color:var(--wht3);letter-spacing:.5px;}
+.n-btn{font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:10px 22px;background:var(--gld);color:var(--blk);border:none;cursor:pointer;font-weight:500;transition:background .2s;}
+.n-btn:hover{background:var(--gld2);}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:92vh;background:var(--blk2);}
+.h-left{padding:5rem 3.5rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(196,162,101,0.1);}
+.h-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gld);margin-bottom:2rem;display:flex;align-items:center;gap:.8rem;}
+.h-eyebrow::before{content:'';width:32px;height:1px;background:var(--gld);opacity:.5;}
+.h-title{font-family:var(--serif);font-size:clamp(52px,6.5vw,84px);font-weight:300;line-height:1;letter-spacing:-1px;margin-bottom:1.5rem;}
+.h-title em{display:block;font-style:italic;color:var(--gld);}
+.h-sub{font-size:13px;line-height:1.9;color:var(--wht6);max-width:380px;margin-bottom:2.5rem;font-weight:300;}
+.h-actions{display:flex;gap:1rem;margin-bottom:4rem;}
+.btn-solid{font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:13px 32px;background:var(--gld);color:var(--blk);border:none;cursor:pointer;font-weight:500;transition:background .2s;}
+.btn-solid:hover{background:var(--gld2);}
+.btn-ghost{font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:13px 32px;background:transparent;color:var(--wht);border:1px solid rgba(248,246,242,0.2);cursor:pointer;font-weight:400;transition:all .2s;}
+.btn-ghost:hover{border-color:var(--gld);color:var(--gld);}
+.h-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(196,162,101,0.1);}
+.hst{background:var(--blk2);padding:1.5rem 1rem;}
+.hst-n{font-family:var(--serif);font-size:38px;font-weight:300;color:var(--wht);line-height:1;}
+.hst-l{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--wht3);margin-top:5px;}
+
+.h-right{background:var(--blk3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.h-pattern{position:absolute;inset:0;background-image:linear-gradient(rgba(196,162,101,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(196,162,101,0.04) 1px,transparent 1px);background-size:52px 52px;}
+.h-art{position:relative;z-index:2;}
+.h-badge{position:absolute;bottom:2.5rem;left:2.5rem;background:var(--gld);padding:1.4rem 1.8rem;}
+.hb-n{font-family:var(--serif);font-size:40px;font-weight:300;color:var(--blk);line-height:1;}
+.hb-l{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--blk);opacity:.65;margin-top:4px;}
+.h-vert{position:absolute;top:2.5rem;right:2.5rem;writing-mode:vertical-rl;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(196,162,101,0.35);}
+
+.ticker-bar{background:var(--gld);padding:.7rem 0;overflow:hidden;white-space:nowrap;}
+.ticker-inner{display:inline-flex;animation:scroll-tick 24s linear infinite;}
+.t-item{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--blk);padding:0 2.5rem;font-weight:500;}
+.t-sep{color:rgba(12,12,12,.35);}
+@keyframes scroll-tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+.section{padding:5.5rem 3rem;}
+.sec-hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3.5rem;}
+.sec-ey{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gld);margin-bottom:.8rem;}
+.sec-h2{font-family:var(--serif);font-size:clamp(34px,3.5vw,50px);font-weight:300;line-height:1.1;}
+.sec-h2 em{font-style:italic;color:var(--gld);}
+.sec-link{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--wht3);cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:color .2s;white-space:nowrap;}
+.sec-link:hover{color:var(--gld);}
+.sec-link i{font-size:14px;}
+
+.v-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:2px;background:rgba(196,162,101,0.08);}
+.v-main{background:var(--blk);cursor:pointer;overflow:hidden;}
+.v-main:hover .v-ov{opacity:1;}
+.v-vis{height:460px;background:var(--blk3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.v-vg{position:absolute;inset:0;background-image:linear-gradient(rgba(196,162,101,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(196,162,101,0.035) 1px,transparent 1px);background-size:44px 44px;}
+.v-ov{position:absolute;inset:0;background:rgba(196,162,101,0.07);opacity:0;transition:opacity .3s;}
+.v-meta{padding:1.8rem 2rem 2.2rem;}
+.v-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gld);margin-bottom:.6rem;}
+.v-name{font-family:var(--serif);font-size:26px;font-weight:300;margin-bottom:.4rem;}
+.v-cap{font-size:11px;color:var(--wht3);display:flex;align-items:center;gap:.4rem;}
+.v-cap i{font-size:13px;color:var(--gld);}
+
+.v-col{display:flex;flex-direction:column;gap:2px;}
+.v-card{background:var(--blk2);cursor:pointer;transition:background .25s;overflow:hidden;flex:1;}
+.v-card:hover{background:var(--blk3);}
+.v-vis-s{height:200px;background:var(--blk3);display:flex;align-items:center;justify-content:center;}
+.v-card .v-meta{padding:1.3rem 1.5rem 1.6rem;}
+.v-card .v-name{font-size:20px;}
+
+.svc-section{background:var(--blk2);}
+.svc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;background:rgba(196,162,101,0.08);margin-top:3.5rem;}
+.svc{background:var(--blk2);padding:2.5rem 1.8rem;cursor:pointer;transition:background .25s;display:flex;flex-direction:column;}
+.svc:hover{background:var(--blk3);}
+.svc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.8rem;}
+.svc-ico{width:44px;height:44px;border:1px solid rgba(196,162,101,0.2);display:flex;align-items:center;justify-content:center;}
+.svc-ico i{font-size:20px;color:var(--gld);}
+.svc-num{font-size:11px;color:rgba(196,162,101,0.3);font-weight:500;letter-spacing:1px;}
+.svc-name{font-family:var(--serif);font-size:21px;font-weight:300;margin-bottom:.7rem;}
+.svc-body{font-size:12px;line-height:1.85;color:var(--wht3);flex:1;}
+.svc-more{margin-top:1.5rem;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(196,162,101,0.5);display:flex;align-items:center;gap:.4rem;transition:color .2s;}
+.svc:hover .svc-more{color:var(--gld);}
+.svc-more i{font-size:13px;}
+
+.gal-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:260px 260px;gap:2px;margin-top:3.5rem;}
+.gi{overflow:hidden;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;}
+.gi:hover .gi-ov{opacity:1;}
+.gi:hover .gi-lbl{opacity:1;transform:translateY(0);}
+.gi-1{grid-column:span 5;grid-row:span 2;background:#111010;}
+.gi-2{grid-column:span 4;background:#0E1210;}
+.gi-3{grid-column:span 3;background:#10100E;}
+.gi-4{grid-column:span 7;background:#120E0E;}
+.gi-5{grid-column:span 5;background:#0E0E12;}
+.gi-ov{position:absolute;inset:0;background:rgba(196,162,101,0.09);opacity:0;transition:opacity .3s;}
+.gi-lbl{position:absolute;bottom:1rem;left:1.2rem;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(248,246,242,.55);opacity:0;transform:translateY(6px);transition:all .3s;}
+.gal-foot{text-align:center;margin-top:2.5rem;}
+
+.contact-sec{background:var(--blk2);}
+.ct-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;}
+.ct-left{}
+.ct-left .sec-ey{margin-bottom:.8rem;}
+.ct-body{font-size:13px;line-height:1.9;color:var(--wht6);margin-bottom:2.5rem;font-weight:300;}
+.ct-items{display:flex;flex-direction:column;gap:1.3rem;}
+.ct-item{display:flex;align-items:flex-start;gap:1rem;}
+.ct-ico{width:38px;height:38px;border:1px solid rgba(196,162,101,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ct-ico i{font-size:16px;color:var(--gld);}
+.ct-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--wht3);margin-bottom:3px;}
+.ct-val{font-size:13px;color:var(--wht);}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.fg{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1rem;}
+.fg label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--wht3);}
+.fg input,.fg select,.fg textarea{background:rgba(248,246,242,0.05);border:1px solid rgba(196,162,101,0.15);color:var(--wht);padding:11px 14px;font-family:var(--sans);font-size:13px;outline:none;transition:border-color .2s;width:100%;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(196,162,101,.5);}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(248,246,242,.2);}
+.fg select{appearance:none;cursor:pointer;color:rgba(248,246,242,.5);}
+.fg select option{background:var(--blk3);color:var(--wht);}
+.fg textarea{resize:vertical;min-height:100px;}
+.form-submit{width:100%;background:var(--gld);border:none;color:var(--blk);font-family:var(--sans);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;padding:15px;cursor:pointer;font-weight:500;transition:background .2s;margin-top:.3rem;}
+.form-submit:hover{background:var(--gld2);}
+.form-note{font-size:11px;color:var(--wht3);text-align:center;margin-top:.8rem;}
+
+.footer{background:#080808;padding:4rem 3rem 2rem;border-top:1px solid rgba(196,162,101,0.08);}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(196,162,101,0.07);}
+.f-logo{font-family:var(--serif);font-size:20px;font-weight:300;letter-spacing:5px;color:var(--gld);text-transform:uppercase;margin-bottom:.8rem;}
+.f-logo span{color:var(--wht);font-style:italic;}
+.f-desc{font-size:12px;line-height:1.9;color:rgba(248,246,242,.22);max-width:210px;margin-bottom:1.8rem;}
+.f-soc{display:flex;gap:.6rem;}
+.fsb{width:30px;height:30px;border:1px solid rgba(196,162,101,0.15);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s;}
+.fsb:hover{border-color:var(--gld);}
+.fsb i{font-size:13px;color:var(--wht3);}
+.f-col-t{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gld);margin-bottom:1.2rem;}
+.f-col-links{display:flex;flex-direction:column;gap:.65rem;}
+.f-col-links a{font-size:12px;color:rgba(248,246,242,.28);text-decoration:none;cursor:pointer;transition:color .2s;}
+.f-col-links a:hover{color:var(--gld);}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;}
+.f-copy{font-size:11px;color:rgba(248,246,242,.18);}
+.f-legal{display:flex;gap:1.8rem;}
+.f-legal a{font-size:11px;color:rgba(248,246,242,.18);text-decoration:none;cursor:pointer;}
+</style>
+
+<h2 class="sr-only">Luxury Wedding Hall — Premier Wedding Venue in India</h2>
+
+<div class="site">
+
+<nav class="nav">
+  <div class="n-logo">The <span>Grand</span> Hall</div>
+  <div class="n-links">
+    <a class="on">Home</a>
+    <a>Venues</a>
+    <a>Services</a>
+    <a>Gallery</a>
+    <a>About</a>
+    <a>Contact</a>
+  </div>
+  <div class="n-right">
+    <span class="n-tel">+91 98765 43210</span>
+    <button class="n-btn" onclick="sendPrompt('I want to enquire about booking a venue at The Grand Hall')">Enquire Now</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="h-left">
+    <div class="h-eyebrow">Luxury Wedding Venue · India</div>
+    <h1 class="h-title">
+      Where Every<br>
+      <em>Love Story</em><br>
+      Begins
+    </h1>
+    <p class="h-sub">An extraordinary destination for weddings and grand celebrations. Timeless spaces, world-class service, and memories crafted to last a lifetime.</p>
+    <div class="h-actions">
+      <button class="btn-solid" onclick="sendPrompt('Show me all available venues and capacities')">Explore Venues</button>
+      <button class="btn-ghost">View Gallery</button>
+    </div>
+    <div class="h-stats">
+      <div class="hst"><div class="hst-n">2500+</div><div class="hst-l">Weddings</div></div>
+      <div class="hst"><div class="hst-n">6</div><div class="hst-l">Venues</div></div>
+      <div class="hst"><div class="hst-n">25 Yrs</div><div class="hst-l">Excellence</div></div>
+    </div>
+  </div>
+  <div class="h-right">
+    <div class="h-pattern"></div>
+    <div class="h-art">
+      <svg width="280" height="280" viewBox="0 0 280 280">
+        <rect x="40" y="40" width="200" height="200" fill="none" stroke="rgba(196,162,101,0.14)" stroke-width="1"/>
+        <rect x="60" y="60" width="160" height="160" fill="none" stroke="rgba(196,162,101,0.08)" stroke-width="1"/>
+        <circle cx="140" cy="140" r="55" fill="none" stroke="rgba(196,162,101,0.16)" stroke-width="1"/>
+        <circle cx="140" cy="140" r="35" fill="none" stroke="rgba(196,162,101,0.1)" stroke-width="1"/>
+        <circle cx="140" cy="140" r="7" fill="rgba(196,162,101,0.45)"/>
+        <line x1="140" y1="40" x2="140" y2="240" stroke="rgba(196,162,101,0.05)" stroke-width="1"/>
+        <line x1="40" y1="140" x2="240" y2="140" stroke="rgba(196,162,101,0.05)" stroke-width="1"/>
+        <rect x="130" y="30" width="20" height="20" fill="none" stroke="rgba(196,162,101,0.28)" stroke-width="1"/>
+        <rect x="130" y="230" width="20" height="20" fill="none" stroke="rgba(196,162,101,0.28)" stroke-width="1"/>
+        <rect x="30" y="130" width="20" height="20" fill="none" stroke="rgba(196,162,101,0.28)" stroke-width="1"/>
+        <rect x="230" y="130" width="20" height="20" fill="none" stroke="rgba(196,162,101,0.28)" stroke-width="1"/>
+        <line x1="55" y1="55" x2="225" y2="225" stroke="rgba(196,162,101,0.04)" stroke-width="1"/>
+        <line x1="225" y1="55" x2="55" y2="225" stroke="rgba(196,162,101,0.04)" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="h-badge">
+      <div class="hb-n">25</div>
+      <div class="hb-l">Years of Excellence</div>
+    </div>
+    <div class="h-vert">Est. 1998 · India</div>
+  </div>
+</section>
+
+<div class="ticker-bar" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="t-item">Wedding Venue</span><span class="t-sep"> ◆ </span>
+    <span class="t-item">Luxury Banquet Hall</span><span class="t-sep"> ◆ </span>
+    <span class="t-item">Marriage Hall India</span><span class="t-sep"> ◆ </span>
+    <span class="t-item">Reception Hall</span><span class="t-sep"> ◆ </span>
+    <span class="t-item">Grand Celebration Venue</span><span class="t-sep"> ◆ </span>
+    <span class="t-item">Wedding Destination</span><span class="t-sep"> ◆ </span>
+    <span class="t-item">Wedding Venue</span><span class="t-sep"> ◆ </span>
+    <span class="t-item">Luxury Banquet Hall</span><span class="t-sep"> ◆ </span>
+    <span class="t-item">Marriage Hall India</span><span class="t-sep"> ◆ </span>
+    <span class="t-item">Reception Hall</span><span class="t-sep"> ◆ </span>
+    <span class="t-item">Grand Celebration Venue</span><span class="t-sep"> ◆ </span>
+    <span class="t-item">Wedding Destination</span><span class="t-sep"> ◆ </span>
+  </div>
+</div>
+
+<section class="section" style="background:var(--blk);">
+  <div class="sec-hdr">
+    <div>
+      <div class="sec-ey">Our Spaces</div>
+      <h2 class="sec-h2">Venues Built for <em>Grand</em> Moments</h2>
+    </div>
+    <span class="sec-link" onclick="sendPrompt('Show me all venues with full details')">All Venues <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+  </div>
+  <div class="v-grid">
+    <div class="v-main">
+      <div class="v-vis">
+        <div class="v-vg"></div>
+        <div class="v-ov"></div>
+        <svg width="140" height="140" viewBox="0 0 140 140" opacity="0.2">
+          <rect x="10" y="65" width="120" height="65" fill="none" stroke="#C4A265" stroke-width="1"/>
+          <polygon points="70,10 10,65 130,65" fill="none" stroke="#C4A265" stroke-width="1"/>
+          <rect x="55" y="95" width="30" height="35" fill="none" stroke="#C4A265" stroke-width="1"/>
+          <line x1="70" y1="10" x2="70" y2="2" stroke="#C4A265" stroke-width="1"/>
+          <circle cx="70" cy="1" r="2.5" fill="#C4A265"/>
+          <rect x="22" y="80" width="20" height="20" fill="none" stroke="#C4A265" stroke-width=".6"/>
+          <rect x="98" y="80" width="20" height="20" fill="none" stroke="#C4A265" stroke-width=".6"/>
+        </svg>
+      </div>
+      <div class="v-meta">
+        <div class="v-tag">Flagship · Indoor Ballroom</div>
+        <div class="v-name">The Grand Ballroom</div>
+        <div class="v-cap"><i class="ti ti-users" aria-hidden="true"></i> Up to 1,200 guests · 15,000 sq ft</div>
+      </div>
+    </div>
+    <div class="v-col">
+      <div class="v-card">
+        <div class="v-vis-s" style="background:#0D1210;">
+          <svg width="64" height="64" viewBox="0 0 64 64" opacity="0.2">
+            <circle cx="32" cy="32" r="26" fill="none" stroke="#C4A265" stroke-width="1"/>
+            <circle cx="32" cy="32" r="14" fill="none" stroke="#C4A265" stroke-width=".7"/>
+            <circle cx="32" cy="32" r="4" fill="#C4A265"/>
+          </svg>
+        </div>
+        <div class="v-meta">
+          <div class="v-tag">Outdoor · Garden Lawn</div>
+          <div class="v-name">Crystal Garden</div>
+          <div class="v-cap"><i class="ti ti-users" aria-hidden="true"></i> Up to 800 guests</div>
+        </div>
+      </div>
+      <div class="v-card">
+        <div class="v-vis-s" style="background:#100E12;">
+          <svg width="64" height="64" viewBox="0 0 64 64" opacity="0.2">
+            <rect x="10" y="16" width="44" height="32" fill="none" stroke="#C4A265" stroke-width="1"/>
+            <line x1="10" y1="26" x2="54" y2="26" stroke="#C4A265" stroke-width=".6"/>
+            <rect x="20" y="31" width="10" height="10" fill="none" stroke="#C4A265" stroke-width=".6"/>
+            <rect x="35" y="31" width="10" height="10" fill="none" stroke="#C4A265" stroke-width=".6"/>
+          </svg>
+        </div>
+        <div class="v-meta">
+          <div class="v-tag">Indoor · Intimate Hall</div>
+          <div class="v-name">The Ivory Suite</div>
+          <div class="v-cap"><i class="ti ti-users" aria-hidden="true"></i> Up to 350 guests</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section svc-section">
+  <div class="sec-hdr">
+    <div>
+      <div class="sec-ey">What We Offer</div>
+      <h2 class="sec-h2">Everything for Your <em>Perfect</em> Day</h2>
+    </div>
+  </div>
+  <div class="svc-grid">
+    <div class="svc">
+      <div class="svc-top">
+        <div class="svc-ico"><i class="ti ti-heart" aria-hidden="true"></i></div>
+        <span class="svc-num">01</span>
+      </div>
+      <div class="svc-name">Wedding Planning</div>
+      <div class="svc-body">End-to-end coordination from your first meeting to the final farewell. Our planners handle every detail so you stay present in every moment.</div>
+      <div class="svc-more">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+    </div>
+    <div class="svc">
+      <div class="svc-top">
+        <div class="svc-ico"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i></div>
+        <span class="svc-num">02</span>
+      </div>
+      <div class="svc-name">Fine Dining</div>
+      <div class="svc-body">500+ dishes spanning regional Indian and international cuisines. Our chefs craft menus that reflect your family's heritage and tastes.</div>
+      <div class="svc-more">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+    </div>
+    <div class="svc">
+      <div class="svc-top">
+        <div class="svc-ico"><i class="ti ti-flower" aria-hidden="true"></i></div>
+        <span class="svc-num">03</span>
+      </div>
+      <div class="svc-name">Décor & Florals</div>
+      <div class="svc-body">Bespoke floral arrangements, mandap design, and stage styling by experienced artisans who bring your vision to life.</div>
+      <div class="svc-more">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+    </div>
+    <div class="svc">
+      <div class="svc-top">
+        <div class="svc-ico"><i class="ti ti-bed" aria-hidden="true"></i></div>
+        <span class="svc-num">04</span>
+      </div>
+      <div class="svc-name">Accommodation</div>
+      <div class="svc-body">200+ luxury rooms and suites on-site for family and guests — comfort and elegance right at the venue, no commute required.</div>
+      <div class="svc-more">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--blk);">
+  <div class="sec-hdr">
+    <div>
+      <div class="sec-ey">Gallery</div>
+      <h2 class="sec-h2">A Glimpse of <em>Our World</em></h2>
+    </div>
+    <span class="sec-link" onclick="sendPrompt('Take me to the full photo gallery')">View All <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+  </div>
+  <div class="gal-grid">
+    <div class="gi gi-1">
+      <svg width="80" height="80" viewBox="0 0 80 80" opacity="0.14"><circle cx="40" cy="40" r="34" fill="none" stroke="#C4A265" stroke-width="1"/><circle cx="40" cy="40" r="18" fill="none" stroke="#C4A265" stroke-width=".7"/><circle cx="40" cy="40" r="5" fill="#C4A265"/></svg>
+      <div class="gi-ov"></div><span class="gi-lbl">The Grand Ballroom</span>
+    </div>
+    <div class="gi gi-2">
+      <svg width="56" height="56" viewBox="0 0 56 56" opacity="0.14"><rect x="8" y="8" width="40" height="40" fill="none" stroke="#C4A265" stroke-width="1"/><rect x="16" y="16" width="24" height="24" fill="none" stroke="#C4A265" stroke-width=".6"/></svg>
+      <div class="gi-ov"></div><span class="gi-lbl">Reception Setup</span>
+    </div>
+    <div class="gi gi-3">
+      <svg width="50" height="50" viewBox="0 0 50 50" opacity="0.14"><polygon points="25,6 44,40 6,40" fill="none" stroke="#C4A265" stroke-width="1"/></svg>
+      <div class="gi-ov"></div><span class="gi-lbl">Mandap Décor</span>
+    </div>
+    <div class="gi gi-4">
+      <svg width="68" height="50" viewBox="0 0 68 50" opacity="0.14"><ellipse cx="34" cy="25" rx="26" ry="17" fill="none" stroke="#C4A265" stroke-width="1"/><line x1="8" y1="25" x2="60" y2="25" stroke="#C4A265" stroke-width=".6"/></svg>
+      <div class="gi-ov"></div><span class="gi-lbl">Crystal Garden</span>
+    </div>
+    <div class="gi gi-5">
+      <svg width="60" height="50" viewBox="0 0 60 50" opacity="0.14"><rect x="12" y="12" width="36" height="26" fill="none" stroke="#C4A265" stroke-width="1" transform="rotate(45 30 25)"/></svg>
+      <div class="gi-ov"></div><span class="gi-lbl">Fine Dining</span>
+    </div>
+  </div>
+  <div class="gal-foot">
+    <button class="btn-ghost" onclick="sendPrompt('Show me the complete wedding photo gallery')">View Full Gallery</button>
+  </div>
+</section>
+
+<section class="section contact-sec">
+  <div class="ct-grid">
+    <div class="ct-left">
+      <div class="sec-ey">Get in Touch</div>
+      <h2 class="sec-h2" style="margin-bottom:1.2rem;">Let's Plan Your <em>Dream</em> Wedding</h2>
+      <p class="ct-body">Our wedding specialists are available 7 days a week. Reach out to schedule a private venue tour or to share your requirements — no obligation, just a conversation.</p>
+      <div class="ct-items">
+        <div class="ct-item">
+          <div class="ct-ico"><i class="ti ti-phone" aria-hidden="true"></i></div>
+          <div><div class="ct-lbl">Call Us</div><div class="ct-val">+91 98765 43210</div></div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-ico"><i class="ti ti-mail" aria-hidden="true"></i></div>
+          <div><div class="ct-lbl">Email</div><div class="ct-val">hello@thegrandhall.in</div></div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-ico"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+          <div><div class="ct-lbl">Address</div><div class="ct-val">Your City, State, India</div></div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-ico"><i class="ti ti-clock" aria-hidden="true"></i></div>
+          <div><div class="ct-lbl">Open Hours</div><div class="ct-val">Daily · 9:00 AM – 8:00 PM</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ct-right">
+      <div class="form-row">
+        <div class="fg">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full name"/>
+        </div>
+        <div class="fg">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX"/>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@email.com"/>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label>Event Type</label>
+          <select>
+            <option value="" disabled selected>Select event</option>
+            <option>Wedding Ceremony</option>
+            <option>Reception</option>
+            <option>Engagement</option>
+            <option>Mehendi / Sangeet</option>
+            <option>Other Celebration</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Expected Guests</label>
+          <select>
+            <option value="" disabled selected>Select range</option>
+            <option>Below 100</option>
+            <option>100 – 300</option>
+            <option>300 – 600</option>
+            <option>600 – 1000</option>
+            <option>1000+</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Preferred Date</label>
+        <input type="date"/>
+      </div>
+      <div class="fg">
+        <label>Message</label>
+        <textarea placeholder="Tell us about your event, any special requirements or questions..."></textarea>
+      </div>
+      <button class="form-submit" onclick="sendPrompt('I submitted an enquiry from the contact form')">Send Enquiry ↗</button>
+      <p class="form-note">We respond within 24 hours · Your information is private</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top">
+    <div>
+      <div class="f-logo">The <span>Grand</span> Hall</div>
+      <p class="f-desc">A premier luxury wedding destination. Creating extraordinary celebrations since 1998.</p>
+      <div class="f-soc">
+        <div class="fsb"><i class="ti ti-brand-instagram" aria-label="Instagram"></i></div>
+        <div class="fsb"><i class="ti ti-brand-facebook" aria-label="Facebook"></i></div>
+        <div class="fsb"><i class="ti ti-brand-youtube" aria-label="YouTube"></i></div>
+        <div class="fsb"><i class="ti ti-brand-whatsapp" aria-label="WhatsApp"></i></div>
+      </div>
+    </div>
+    <div>
+      <div class="f-col-t">Venues</div>
+      <div class="f-col-links">
+        <a>The Grand Ballroom</a>
+        <a>Crystal Garden</a>
+        <a>The Ivory Suite</a>
+        <a>All Venues</a>
+      </div>
+    </div>
+    <div>
+      <div class="f-col-t">Services</div>
+      <div class="f-col-links">
+        <a>Wedding Planning</a>
+        <a>Fine Dining</a>
+        <a>Décor & Florals</a>
+        <a>Accommodation</a>
+      </div>
+    </div>
+    <div>
+      <div class="f-col-t">Company</div>
+      <div class="f-col-links">
+        <a>About Us</a>
+        <a>Gallery</a>
+        <a>Blog</a>
+        <a>Contact Us</a>
+      </div>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span class="f-copy">© 2025 The Grand Hall Wedding Venue, India. All rights reserved.</span>
+    <div class="f-legal">
+      <a>Privacy Policy</a>
+      <a>Terms of Use</a>
+      <a>Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+</div>
